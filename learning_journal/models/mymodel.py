@@ -1,4 +1,4 @@
-#import stuff used by Entry
+# import stuff used by Entry
 import datetime
 from sqlalchemy import (
     Column,
@@ -8,9 +8,23 @@ from sqlalchemy import (
     Text,
     Unicode,
     UnicodeText,
-    )
+)
 
 from .meta import Base
+
+import sqlalchemy as sa
+from sqlalchemy.ext.declarative import declarative_base
+
+from sqlalchemy.orm import (
+    scoped_session,
+    sessionmaker,
+)
+
+from zope.sqlalchemy import ZopeTransactionExtension
+
+DBSession = scoped_session(sessionmaker(extnsion=ZopeTransactionExtension()))
+Base = declarative_base()
+
 
 # this is the class that came with the scaffold, we can remove it
 # class MyModel(Base):
@@ -22,7 +36,7 @@ from .meta import Base
 #
 # Index('my_index', MyModel.name, unique=True, mysql_length=255)
 
-#add entry class - to be used by our learning journal
+# add entry class - to be used by our learning journal
 class Entry(Base):
     __tablename__ = 'entries'
     id = Column(Integer, primary_key=True)
