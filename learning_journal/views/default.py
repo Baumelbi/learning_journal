@@ -3,9 +3,11 @@ from pyramid.view import view_config
 
 from sqlalchemy.exc import DBAPIError
 
-from ..models import Entry
 from ..models.mymodel import Entry, DBSession
 from pyramid.httpexceptions import HTTPNotFound
+
+from pyramid.httpexceptions import HTTPFound
+from .forms import EntryCreateForm
 
 
 # @view_config(route_name='home', renderer='../templates/mytemplate.jinja2')
@@ -20,7 +22,7 @@ from pyramid.httpexceptions import HTTPNotFound
 @view_config(route_name='home', renderer='templates/list.jinja2')
 def index_page(request):
     entries = Entry.all()
-    return {"entries:entries"}
+    return {"entries":entries}
 
 
 @view_config(route_name='detail', renderer='templates/detail.jinja2')
@@ -32,9 +34,16 @@ def view(request):
     return {'entry': entry}
 
 
-@view_config(route_name='action', match_param='action=create', renderer='string')
+@view_config(route_name='action', match_param='action=create',
+             renderer='templates/edit.jinja2')
 def create(request):
-    return 'create page'
+    entry = Entry()
+    form = EntryCreateForm(request.POST)
+    if request.method == 'POST' and form.validate():
+        form.populate_obj(entry)
+        DBSession.add(entry)
+        return HTTPFound(location=request.route_url('home'))
+    return {'form': form, 'action': request.matchdict.get('action')}
 
 
 @view_config(route_name='action', match_param='action=edit', renderer='string')
