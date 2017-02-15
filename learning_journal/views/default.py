@@ -17,13 +17,13 @@ from pyramid.httpexceptions import HTTPNotFound
 #         return Response(db_err_msg, content_type='text/plain', status=500)
 #     return {'one': one, 'project': 'learning_journal'}
 
-@view_config(route_name='home', renderer='string')
+@view_config(route_name='home', renderer='templates/list.jinja2')
 def index_page(request):
     entries = Entry.all()
     return {"entries:entries"}
 
 
-@view_config(route_name='detail', renderer='string')
+@view_config(route_name='detail', renderer='templates/detail.jinja2')
 def view(request):
     this_id = request.matchdict.get('id', -1)
     entry = Entry.by_id(this_id)
