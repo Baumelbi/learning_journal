@@ -1,7 +1,7 @@
 import os
 import sys
 import transaction
-
+import os
 # added this import
 from sqlalchemy import engine_from_config
 
@@ -43,6 +43,8 @@ def main(argv=sys.argv):
     setup_logging(config_uri)
     settings = get_appsettings(config_uri, options=options)
 
+    if 'DATABASE_URL' in os.environ:
+        settings['sqlalchemy.url'] = os.environ['DATABASE_URL']
     engine = engine_from_config(settings, 'sqlalchemy.')
     DBSession.configure(bind=engine)
 
