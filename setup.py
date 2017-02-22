@@ -17,7 +17,7 @@ requires = [
     'transaction',
     'zope.sqlalchemy',
     'waitress',
-    'wtforms'
+    'wtforms',
     ]
 
 tests_require = [

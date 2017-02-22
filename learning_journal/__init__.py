@@ -1,8 +1,6 @@
 from pyramid.config import Configurator
-
 from sqlalchemy import engine_from_config
 from .models.mymodel import Base, DBSession
-
 
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
@@ -16,4 +14,3 @@ def main(global_config, **settings):
     config.include('.routes')
     config.scan()
     return config.make_wsgi_app()
-
