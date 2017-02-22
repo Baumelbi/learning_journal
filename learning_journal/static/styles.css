@@ -1,8 +1,30 @@
 body{
-    color:#111;
+    color:black;
     padding:0;
     margin:0;
-    background-color: #eee;}
+    background-color: #111;
+		background-image: url("hiking.jpg");
+		background-repeat: no-repeat;
+		background-position: center;
+		text-align: center;}
+p {
+	font-family: cedarville-cursive;
+	color: #fff;
+	text-align: center;
+	text-shadow: 2px 2px black;}
+ul {
+	font-family: cedarville-cursive;
+	color: #fff;
+	text-align: center;
+	text-shadow: 2px 2px black;
+	list-style-type: none;}
+a {
+	font-family: cedarville-cursive;
+	color: #cc0101;
+	text-align: center;
+	text-shadow: 2px 2px black;}
+a:visited, ul:visited{
+	color: #ebe9e6}
 header{
     margin:0;
     padding:0 0.75em;
@@ -10,6 +32,14 @@ header{
     background: #222;
     color: #ccc;
     border-bottom: 3px solid #fff;}
+h1{
+	font-family: Times New Roman;
+	color: white;
+	text-align: center;}
+h2 {
+	font-family: Times New Roman;
+	color: white;
+	text-align: center;}
 header:after{
     content:"";
     display:table;
@@ -19,11 +49,11 @@ footer a{
     text-decoration:none}
 header a:hover,
 footer a:hover {
-    color:#fff;
+    color:#ebe9e6;
 }
 header a:visited,
 footer a:visited {
-    color:#eee;
+    color:#ebe9e6;
 }
 header aside{
     float:right;
@@ -38,18 +68,18 @@ header ul li{
 header ul li a{
     padding:0;
     display:inline-block}
-main{padding:0 0.75em 1em}
+main{padding:0 0.75em 1em;}
 main:after{
     content:"";
     display:table;
-    clear:both}
+    clear:both;}
 main article{
     margin-bottom:1em;
-    padding-left:0.5em}
+    padding-left:0.5em;}
 main article h3{margin-top:0}
 main article .entry_body{
     margin:0.5em}
-main aside{float:right}
+main aside{float:center}
 main aside .field{
     margin-bottom:1em}
 main aside .field input,
@@ -68,6 +98,9 @@ main aside .control_row input{
 footer{
     padding: 1em 0.75em;
     background: #222;
-    color: #ccc;
+    color: #fff;
     border-top: 3px solid #fff;
-    border-bottom: 3px solid #fff;}
+    border-bottom: 3px solid #fff;
+		position:absolute;
+    width:100%;
+    bottom:0px;}
